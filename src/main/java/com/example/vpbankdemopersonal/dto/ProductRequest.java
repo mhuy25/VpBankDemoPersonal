@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductRequest {
+    private String refreshToken;
     private String productName;
-    private String price;
-    private String productDescription;
 }
