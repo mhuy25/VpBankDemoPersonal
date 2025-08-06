@@ -1,4 +1,4 @@
-package com.example.vpbankdemopersonal.dto;
+package com.example.vpbankdemopersonal.dto.request.product;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,5 +1,6 @@
 package com.example.vpbankdemopersonal.config;
 
+import com.example.vpbankdemopersonal.security.AppAuthenticationEntryPoint;
 import com.example.vpbankdemopersonal.security.CustomUserDetailsService;
 import com.example.vpbankdemopersonal.security.JwtFilter;
 import lombok.RequiredArgsConstructor;
@@ -25,11 +26,13 @@ public class SecurityConfig {
 
     private final JwtFilter jwtFilter;
     private final CustomUserDetailsService userDetailsService;
+    private final AppAuthenticationEntryPoint authenticationEntryPoint;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
+                .exceptionHandling(exception -> exception.authenticationEntryPoint(authenticationEntryPoint))
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()

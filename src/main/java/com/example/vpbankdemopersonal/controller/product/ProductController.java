@@ -1,6 +1,6 @@
-package com.example.vpbankdemopersonal.controller;
+package com.example.vpbankdemopersonal.controller.product;
 
-import com.example.vpbankdemopersonal.dto.ProductRequest;
+import com.example.vpbankdemopersonal.dto.request.product.ProductRequest;
 import com.example.vpbankdemopersonal.entity.Products;
 import com.example.vpbankdemopersonal.entity.RefreshToken;
 import com.example.vpbankdemopersonal.repository.RefreshTokenRepository;
@@ -21,7 +21,7 @@ import java.util.Optional;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/common")
-public class CommonController {
+public class ProductController {
     private final AuthService authService;
     private final RefreshTokenRepository refreshTokenRepo;
 
@@ -45,7 +45,7 @@ public class CommonController {
                 refreshTokenRepo.delete(token);
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Session expired due to inactivity");
             }
-            List<Products> productsList = authService.getAllProducts();
+            List<Products> productsList = authService.getAllProducts(req);
             token.setLastActivityTime(LocalDateTime.now());
             refreshTokenRepo.save(token);
             return ResponseEntity.ok(productsList);
@@ -74,7 +74,7 @@ public class CommonController {
                 refreshTokenRepo.delete(token);
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Session expired due to inactivity");
             }
-            Products product = authService.getProductByName(req.getProductName());
+            Products product = authService.getProductByName(req);
             token.setLastActivityTime(LocalDateTime.now());
             refreshTokenRepo.save(token);
             return ResponseEntity.ok(product);

@@ -1,8 +1,8 @@
-package com.example.vpbankdemopersonal.controller;
+package com.example.vpbankdemopersonal.controller.auth;
 
-import com.example.vpbankdemopersonal.dto.LoginRequest;
-import com.example.vpbankdemopersonal.dto.LogoutRequest;
-import com.example.vpbankdemopersonal.dto.RegisterRequest;
+import com.example.vpbankdemopersonal.dto.request.auth.LoginRequest;
+import com.example.vpbankdemopersonal.dto.request.auth.LogoutRequest;
+import com.example.vpbankdemopersonal.dto.request.auth.RegisterRequest;
 import com.example.vpbankdemopersonal.entity.RefreshToken;
 import com.example.vpbankdemopersonal.repository.RefreshTokenRepository;
 import com.example.vpbankdemopersonal.security.CustomUserDetailsService;

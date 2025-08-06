@@ -1,4 +1,4 @@
-package com.example.vpbankdemopersonal.dto;
+package com.example.vpbankdemopersonal.dto.request.auth;
 
 import lombok.Data;
 
